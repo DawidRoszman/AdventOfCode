@@ -17,4 +17,4 @@ const calculateMaxCaloriesForN = (n: number) => {
 };
 
 const res = calculateMaxCaloriesForN(3);
-console.log(res);
+console.log(...res);
