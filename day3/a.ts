@@ -12,5 +12,6 @@ const out = lines.map((line) => {
   else
     return same_char!.charCodeAt(0)-96
 })
+
 console.log(out.reduce((sum, a) => sum + a));
 
