@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class PartI {
 
     public static boolean IsInt(String str) {
         try {
@@ -36,18 +36,15 @@ public class Main {
             int l = 0;
             int r = s.length() - 1;
             while (!foundL || !foundR) {
-                if (IsInt(sArr[l])) {
+                if (IsInt(sArr[l]))
                     foundL = true;
-                } else {
-                    if (!foundL)
-                        l += 1;
-                }
-                if (IsInt(sArr[r])) {
+                if (IsInt(sArr[r]))
                     foundR = true;
-                } else {
-                    if (!foundR)
-                        r -= 1;
-                }
+
+                if (!foundL)
+                    l += 1;
+                if (!foundR)
+                    r -= 1;
 
             }
             int sum = Integer.parseInt(sArr[l] + sArr[r]);
