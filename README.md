@@ -2,5 +2,5 @@
 
 | Day | 1 |
 |---|---|
-|Language| ![Java1](https://skillicons.dev/icons?i=java) |
-| Parts |  |
+|Language| ![Go1](https://skillicons.dev/icons?i=go) |
+| Parts | ⭐ |
