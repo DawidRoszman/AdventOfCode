@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
 
-var wordToFind = "XMAS"
 
-func PartI(file []byte) {
+func PartII(file []byte) {
 
 	wordCount := 0
 
@@ -19,49 +19,39 @@ func PartI(file []byte) {
 		letters = append(letters, lettersInLine)
 	}
 
-	for i := range letters {
-		for j := range letters[i] {
-			wordCount += search2D(letters, i, j, wordToFind)
-		}
-	}
-	fmt.Println(wordCount)
+  grids := extractOverlapping3x3(letters)
+	pattern := regexp.MustCompile("M.S.A.M.S|S.S.A.M.M|M.M.A.S.S|S.M.A.S.M")
+  for _, grid := range grids{
+    if (pattern.MatchString(grid)){
+      wordCount++
+    }
+  }
+  fmt.Println(wordCount)
 }
 
-func search2D(grid [][]string, row, col int, word string) int {
-	m := len(grid)
-	n := len(grid[0])
+func extractOverlapping3x3(grid [][]string) []string {
+	var result []string
 
-	wordLen := len(word)
-	x := []int{-1, -1, -1, 0, 0, 1, 1, 1}
-	y := []int{-1, 0, 1, -1, 1, -1, 0, 1}
+	rows := len(grid)
+	if rows < 3 {
+		return result // Not enough rows for a 3x3 block
+	}
+	cols := len(grid[0])
+	if cols < 3 {
+		return result // Not enough columns for a 3x3 block
+	}
 
-	count := 0
-
-	for dir := 0; dir < 8; dir++ {
-		currX, currY := row, col
-		k := 0
-		found := true
-
-		for k < wordLen {
-			if currX < 0 || currX >= m || currY < 0 || currY >= n {
-				found = false
-				break
+	// Iterate over the grid with overlapping 3x3 blocks
+	for i := 0; i <= rows-3; i++ {
+		for j := 0; j <= cols-3; j++ {
+			var sb strings.Builder
+			// Extract the 3x3 block and join strings
+			for k := 0; k < 3; k++ {
+				sb.WriteString(strings.Join(grid[i+k][j:j+3], ""))
 			}
-
-			if grid[currX][currY] != string(word[k]) {
-				found = false
-				break
-			}
-
-			currX += x[dir]
-			currY += y[dir]
-			k++
-		}
-
-		if found && k == wordLen {
-			count++
+			result = append(result, sb.String())
 		}
 	}
 
-	return count
+	return result
 }

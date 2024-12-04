@@ -12,6 +12,6 @@ func main() {
 		log.Fatal("Could not open file", fileName)
 	}
 	PartI(file)
-	// PartII(file)
+	PartII(file)
 
 }

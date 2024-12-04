@@ -5,10 +5,10 @@ import (
 	"strings"
 )
 
-var wordToFind = "XMAS"
 
 func PartI(file []byte) {
 
+  wordToFind := "XMAS"
 	wordCount := 0
 
 	lines := strings.Split(string(file), "\n")
