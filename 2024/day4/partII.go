@@ -34,18 +34,16 @@ func extractOverlapping3x3(grid [][]string) []string {
 
 	rows := len(grid)
 	if rows < 3 {
-		return result // Not enough rows for a 3x3 block
+		return result 
 	}
 	cols := len(grid[0])
 	if cols < 3 {
-		return result // Not enough columns for a 3x3 block
+		return result
 	}
 
-	// Iterate over the grid with overlapping 3x3 blocks
 	for i := 0; i <= rows-3; i++ {
 		for j := 0; j <= cols-3; j++ {
 			var sb strings.Builder
-			// Extract the 3x3 block and join strings
 			for k := 0; k < 3; k++ {
 				sb.WriteString(strings.Join(grid[i+k][j:j+3], ""))
 			}
