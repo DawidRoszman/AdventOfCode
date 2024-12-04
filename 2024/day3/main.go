@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Could not open file", fileName)
 	}
-	// PartI(file)
+	PartI(file)
 	PartII(file)
 
 }

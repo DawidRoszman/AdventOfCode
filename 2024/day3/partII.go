@@ -43,8 +43,6 @@ func PartII(file []byte) {
 		}
 	}
 
-	fmt.Println(enabled)
-
 	for _, value := range enabled {
 		calculations := lineRegex.FindAllString(value, -1)
 		for _, calculation := range calculations {
