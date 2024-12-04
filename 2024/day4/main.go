@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fileName := "test_input.txt"
+	fileName := "input.txt"
 	file, err := os.ReadFile(fileName)
 	if err != nil {
 		log.Fatal("Could not open file", fileName)
